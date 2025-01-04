@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phasmophobia: Ghosts and Updates</title>
@@ -12,92 +10,140 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0a0a0a;
-            color: #e6e6e6;
+            background: linear-gradient(45deg, #0b0b0b, #1d1d1d);
+            color: #ffffff;
         }
         header {
-            background-color: #1a1a1a;
-            padding: 40px 20px;
+            background: #ff0000;
+            padding: 70px 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-bottom: 5px solid #ff0f0f;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5em;
-            color: #ff0000;
-            text-shadow: 2px 2px 5px #000000;
+            font-size: 3.5em;
+            color: #fff;
+            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.7);
         }
         nav {
             text-align: center;
-            margin: 20px 0;
-            background-color: #222;
-            padding: 10px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 30px 0;
+            background: #333;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #ff0000;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+
         nav a {
-            color: #ff0000;
+            color: #f8f8f8;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 25px;
             font-weight: bold;
-            font-size: 1.1em;
-            transition: color 0.3s;
+            font-size: 1.3em;
+            position: relative;
+            display: inline-block;
+            padding: 0 5px;
+            transition: all 0.3s;
         }
         nav a:hover {
-            color: #ffffff;
-            text-decoration: underline;
+            color: #ff0000;
         }
         section {
-            padding: 30px;
+            padding: 40px;
             margin: 20px;
-            background-color: #1a1a1a;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #1a1a1a, #333);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
         }
         section h2 {
             color: #ff0000;
-            border-bottom: 2px solid #ff0000;
-            padding-bottom: 10px;
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 5px #000000;
+        }
+        .ghost-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
         .ghost {
-            margin-bottom: 25px;
-            padding: 15px;
+            padding: 25px;
             background-color: #2a2a2a;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .ghost h3 {
-            color: #e6e6e6;
+            color: #ff0000;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-transform: capitalize;
         }
         .ghost p {
-            line-height: 1.6;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
-        footer {
-            background-color: #1a1a1a;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 30px;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+        .ghost-buttons {
+            display: flex;
+            justify-content: space-between;
         }
-        footer p {
-            color: #ff0000;
-            font-size: 0.9em;
+        .ghost-button {
+            background-color: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
-        .rank-box {
-            background: linear-gradient(45deg, #333, #444);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        .ghost-button:hover {
+            background-color: #b40000;
         }
-        .rank-box h3 {
-            color: #ff0000;
-            font-size: 2em;
-            margin: 0;
+        .ghost-removed {
+            display: none;
         }
-        .rank-box p {
-            color: #e6e6e6;
-            font-size: 1.2em;
-            margin-top: 10px;
+        .ghost-checked h3 {
+            color: #28a745; /* Green color when checked */
+        }
+        .reset-btn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 20px auto;
+        }
+        .reset-btn:hover {
+            background-color: #555;
         }
     </style>
 </head>
@@ -106,99 +152,265 @@
         <h1>Phasmophobia: Ghosts and Updates</h1>
     </header>
     <nav>
-        <a href="#ghosts">Ghosts</a>
-        <a href="#updates">Latest Updates</a>
-        <a href="#highest-rank">Highest Rank</a>
-        <a href="#ATG">About The Game</a>
+        <a href="#ghosts"><button>Ghosts</button></a>
+        <a href="#updates"><button>Latest Updates</button></a>
+        <a href="#highest-rank"><button>Highest Rank</button></a>
+        <a href="#ATG"><button>About The Game</button></a>
+        <a href="#MAP"><button>MAPS</button></a>
     </nav>
     <section id="ATG">
-      <h2>About The game</h2>
-      <p><center>Phasmophobia is the fear of ghosts or supernatural entities, often associated with intense anxiety or panic when confronted with thoughts or situations
-         involving spirits or hauntings. People with phasmophobia may experience symptoms like rapid heartbeat, sweating, trembling, and shortness of breath when faced with
-          anything related to the paranormal, such as visiting supposedly haunted locations or watching ghost-related media. The fear is often linked to cultural beliefs, personal 
-          experiences, or a vivid imagination. In some cases, the phobia may stem from childhood trauma or being exposed to frightening ghost stories, movies, or TV shows. Treatment
-           options for phasmophobia can include cognitive-behavioral therapy, exposure therapy, and relaxation techniques to help individuals manage and overcome their fear.</center></p>
-      
-    </section>
+      <h2>About The Game</h2>
+      <p>Phasmophobia is the fear of ghosts or supernatural entities, often associated with intense anxiety or panic when confronted with thoughts or situations involving spirits or hauntings. People with phasmophobia may experience symptoms like rapid heartbeat, sweating, trembling, and shortness of breath when faced with anything related to the paranormal, such as visiting supposedly haunted locations or watching ghost-related media.</p>
+      <p>Treatment options for phasmophobia can include cognitive-behavioral therapy, exposure therapy, and relaxation techniques to help individuals manage and overcome their fear.</p>
+  </section>
+
+
     <section id="ghosts">
         <h2>Ghosts</h2>
-        <div class="ghost">
-            <h3>Spirit</h3>
-            <p>Description: The most common type of ghost with no special abilities.<br><br>
-              Strength: None.<br>
-              Weakness: Using Smudge Sticks near a Spirit prevents it from hunting for a long time (180 seconds).<br><br>
-              Evidence: EMF Level 5, Spirit Box, Ghost Writing.</p>
+        <div class="ghost-list">
+            <!-- Spirit -->
+            <div class="ghost" id="spirit">
+                <h3>Spirit</h3>
+                <p>Description: The most common type of ghost with no special abilities.</p>
+                <p><strong>Strength:</strong> None.<br>
+                   <strong>Weakness:</strong> Using Smudge Sticks near a Spirit prevents it from hunting for a long time (180 seconds).<br>
+                   <strong>Evidence:</strong> EMF Level 5, Spirit Box, Ghost Writing.</p>
+                <div class="ghost-buttons">
+                    <button class="ghost-button" onclick="removeGhost('spirit')">X</button>
+                   
+                </div>
+            </div>
+
+
+            <!-- Wraith -->
+            <div class="ghost" id="wraith">
+                <h3>Wraith</h3>
+                <p>Description: One of the most dangerous ghosts, known for its ability to teleport to players.</p>
+                <p><strong>Strength:</strong> It never touches the ground, so it leaves no footprints.<br>
+                   <strong>Weakness:</strong> Salt repels Wraiths, making them avoid it.<br>
+                   <strong>Evidence:</strong> EMF Level 5, Spirit Box, DOTS Projector.</p>
+                <div class="ghost-buttons">
+                    <button class="ghost-button" onclick="removeGhost('wraith')">X</button>
+                    
+                </div>
+            </div>
+
+
+            <!-- Phantom -->
+            <div class="ghost" id="phantom">
+                <h3>Phantom</h3>
+                <p>Description: A ghost that can disappear when taking a photo of it.</p>
+                <p><strong>Strength:</strong> Looking at a Phantom significantly drops your sanity.<br>
+                   <strong>Weakness:</strong> Taking a photo makes it vanish temporarily.<br>
+                   <strong>Evidence:</strong> Spirit Box, Fingerprints, DOTS Projector.</p>
+                <div class="ghost-buttons">
+                    <button class="ghost-button" onclick="removeGhost('phantom')">X</button>
+                   
+                </div>
+            </div>
+
+
+            <!-- Poltergeist -->
+            <div class="ghost" id="poltergeist">
+                <h3>Poltergeist</h3>
+                <p>Description: Known for its ability to manipulate multiple objects at once.</p>
+                <p><strong>Strength:</strong> Capable of throwing many objects simultaneously, creating fear.<br>
+                   <strong>Weakness:</strong> Useless in empty rooms with no objects to throw.<br>
+                   <strong>Evidence:</strong> Spirit Box, Fingerprints, Ghost Writing.</p>
+                <div class="ghost-buttons">
+                    <button class="ghost-button" onclick="removeGhost('poltergeist')">X</button>
+                    
+                </div>
+            </div>
+            <!-- Hantu -->
+<div class="ghost" id="hantu">
+  <h3>Hantu</h3>
+  <p>Description: Moves faster in colder areas.</p>
+  <p><strong>Strength:</strong> Increases speed in freezing temperatures.<br>
+     <strong>Weakness:</strong> Slower in warmer areas.<br>
+     <strong>Evidence:</strong> Fingerprints, Ghost Orb, Freezing Temperatures.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('hantu')">X</button>
+      
+  </div>
+</div>
+
+
+<!-- Yokai -->
+<div class="ghost" id="yokai">
+  <h3>Yokai</h3>
+  <p>Description: Becomes aggressive when players talk near it.</p>
+  <p><strong>Strength:</strong> Hunts more frequently if players talk nearby.<br>
+     <strong>Weakness:</strong> Limited hearing range during a hunt.<br>
+     <strong>Evidence:</strong> Spirit Box, Ghost Orb, DOTS Projector.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('yokai')">X</button>
+     
+  </div>
+</div>
+
+
+<!-- Goryo -->
+<div class="ghost" id="goryo">
+  <h3>Goryo</h3>
+  <p>Description: Rarely seen and only appears on DOTS through cameras.</p>
+  <p><strong>Strength:</strong> Does not show itself on DOTS unless viewed through a video camera.<br>
+     <strong>Weakness:</strong> Rarely leaves its room.<br>
+     <strong>Evidence:</strong> EMF Level 5, Fingerprints, DOTS Projector.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('goryo')">X</button>
+      
+  </div>
+</div>
+
+
+<!-- Myling -->
+<div class="ghost" id="myling">
+  <h3>Myling</h3>
+  <p>Description: Known for being quieter during hunts.</p>
+  <p><strong>Strength:</strong> Produces quieter footsteps and sounds.<br>
+     <strong>Weakness:</strong> More active with paranormal sounds on a Parabolic Microphone.<br>
+     <strong>Evidence:</strong> EMF Level 5, Fingerprints, Ghost Writing.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('myling')">X</button>
+     
+  </div>
+</div>
+
+
+<!-- Onryo -->
+<div class="ghost" id="onryo">
+  <h3>Onryo</h3>
+  <p>Description: Known as the “fire ghost.”</p>
+  <p><strong>Strength:</strong> Will attack when flames are extinguished.<br>
+     <strong>Weakness:</strong> Fears fire and is less likely to hunt when a flame is nearby.<br>
+     <strong>Evidence:</strong> Spirit Box, Ghost Orb, Freezing Temperatures.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('onryo')">X</button>
+      
+  </div>
+</div>
+
+
+<!-- The Twins -->
+<div class="ghost" id="twins">
+  <h3>The Twins</h3>
+  <p>Description: Two entities that act as one.</p>
+  <p><strong>Strength:</strong> Can confuse players by interacting in different locations.<br>
+     <strong>Weakness:</strong> Deciphering twin interactions can make them easier to identify.<br>
+     <strong>Evidence:</strong> EMF Level 5, Spirit Box, Freezing Temperatures.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('twins')">X</button>
+      
+  </div>
+</div>
+
+
+<!-- Raiju -->
+<div class="ghost" id="raiju">
+  <h3>Raiju</h3>
+  <p>Description: A ghost that feeds on electrical equipment.</p>
+  <p><strong>Strength:</strong> Becomes faster around electronic devices.<br>
+     <strong>Weakness:</strong> Disrupts electronic equipment, making it easier to track.<br>
+     <strong>Evidence:</strong> EMF Level 5, Ghost Orb, DOTS Projector.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('raiju')">X</button>
+      
+  </div>
+</div>
+
+
+<!-- Obake -->
+<div class="ghost" id="obake">
+  <h3>Obake</h3>
+  <p>Description: Shapeshifters that are difficult to track.</p>
+  <p><strong>Strength:</strong> Sometimes leaves unique fingerprints.<br>
+     <strong>Weakness:</strong> Can shape-shift, leaving clues to its identity.<br>
+     <strong>Evidence:</strong> EMF Level 5, Fingerprints, Ghost Orb.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('obake')">X</button>
+     
+  </div>
+</div>
+
+
+<!-- The Mimic -->
+<div class="ghost" id="mimic">
+  <h3>The Mimic</h3>
+  <p>Description: Copies the traits of other ghosts.</p>
+  <p><strong>Strength:</strong> Can mimic another ghost’s strengths and abilities.<br>
+     <strong>Weakness:</strong> Always leaves Ghost Orb evidence in addition to its other clues.<br>
+     <strong>Evidence:</strong> Spirit Box, Fingerprints, Freezing Temperatures.</p>
+  <div class="ghost-buttons">
+      <button class="ghost-button" onclick="removeGhost('mimic')">X</button>
+      
+  </div>
+</div>
+
+
+
+
+            <!-- Add more ghosts below as needed -->
         </div>
-        <div class="ghost">
-            <h3>Wraith</h3>
-            <p>Description: One of the most dangerous ghosts, known for its ability to teleport to players.<br><br>
-              Strength: It never touches the ground, so it leaves no footprints.<br><br>
-              Weakness: Salt repels Wraiths, making them avoid it.<br><br>
-              Evidence: EMF Level 5, Spirit Box, DOTS Projector.</p>
-        </div>
-        <div class="ghost">
-            <h3>Phantom</h3>
-            <p>Description: A ghost that can disappear when taking a photo of it.<br><br>
-              Strength: Looking at a Phantom significantly drops your sanity.<br><br>
-              Weakness: Taking a photo makes it vanish temporarily.<br><br>
-              Evidence: Spirit Box, Fingerprints, DOTS Projector.</p>
-        </div>
-        <div class="ghost">
-            <h3>Banshee</h3>
-            <p>Description: Banshees target one person at a time and fear the Crucifix.<br><br>
-              Strength: Focuses on a single target until they are dead or leave the area.<br><br>
-              Weakness: Fears the Crucifix, which has an extended range against it.<br><br>
-              Evidence: Fingerprints, Ghost Orb, DOTS Projector.</p>
-        </div>
-        <div class="ghost">
-            <h3>Mare</h3>
-            <p>Description: Mares thrive in darkness and are more likely to attack when lights are off.<br><br>
-              Strength: Increased chance to hunt in the dark.<br><br>
-              Weakness: Turning on lights reduces its chance to attack.<br><br>
-              Evidence: Spirit Box, Ghost Orb, Ghost Writing.</p>
-        </div>
-        <div class="ghost">
-            <h3>Poltergeist</h3>
-            <p>Description: A Poltergeist is capable of throwing multiple objects at once, causing fear and confusion.<br><br>
-              Strength: Can throw several objects simultaneously, increasing fear levels.<br><br>
-              Weakness: Becomes powerless in rooms with no throwable items.<br><br>
-              Evidence: Spirit Box, Fingerprints, Ghost Writing.</p>
-        </div>
-        <div class="ghost">
-            <h3>Yokai</h3>
-            <p>Description: A Yokai is attracted to human voices and can attack more frequently when players speak.<br><br>
-              Strength: Increased likelihood to attack when players talk near it.<br><br>
-              Weakness: It can be easily distracted by talking, making it harder to find players.<br><br>
-              Evidence: Spirit Box, Ghost Orb, DOTS Projector.</p>
-        </div>
-        <div class="ghost">
-            <h3>Oni</h3>
-            <p>Description: Oni are very active, making them easier to identify.<br><br>
-              Strength: More active and visible during hunts.<br><br>
-              Weakness: Their high activity makes them easier to track.<br><br>
-              Evidence: EMF Level 5, Freezing Temperatures, DOTS Projector.</p>
-        </div>
-        <div class="ghost">
-            <h3>Revenant</h3>
-            <p>Description: Revenants are violent and can quickly hunt down their prey.<br><br>
-              Strength: Moves extremely fast when chasing a target.<br><br>
-              Weakness: Moves slowly when not hunting.<br><br>
-              Evidence: Ghost Orb, Ghost Writing, Freezing Temperatures.</p>
-        </div>
-        <div class="ghost">
-            <h3>Demon</h3>
-            <p>Description: The Demon is one of the most aggressive ghosts.<br><br>
-              Strength: Frequently attacks without reason.<br><br>
-              Weakness: Asking it questions on the Ouija Board won’t lower sanity.<br><br>
-              Evidence: Fingerprints, Freezing Temperatures, Ghost Writing.</p>
-        </div>
+        <button class="reset-btn" onclick="resetGhosts()">Reset Ghosts</button>
     </section>
-    <section id="updates">
+
+
+    <script>
+        // Remove Ghost functionality
+        function removeGhost(ghostId) {
+            const ghostElement = document.getElementById(ghostId);
+            ghostElement.classList.add('ghost-removed'); // Hides the ghost element
+        }
+
+
+        
+
+
+        // Reset Ghosts functionality (Unhides all ghosts)
+        function resetGhosts() {
+            const ghostElements = document.querySelectorAll('.ghost');
+            ghostElements.forEach(ghost => {
+                ghost.classList.remove('ghost-removed');
+                ghost.querySelector('h3').classList.remove('ghost-checked');
+            });
+        }
+    </script>
+      <section id="updates">
         <h2>Latest Updates</h2>
         <p>Phasmophobia continues to receive exciting updates. Here are the highlights:</p>
+        <!-- THIS IS FOR THE LINK-->
+       
+
+
+
+
+<style>
+  button {
+      background-color: #ff0000;
+      color: white;
+      padding: 5px 3px; /
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 13px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+
+
+
+  button:hover {
+      background-color: #b40000;
+  }
+</style>
+      <!--THIS IS FOR THE LINK-->
         <ul>
             <li>Introducing the Official Phasmophobia Music Box!
-              <a href="https://store.steampowered.com/news/app/739630/view/4463725837189908065"target="_blank" style="color: #76c7c0;"> Check It Out</a>
+                <a href="https://store.steampowered.com/news/app/739630/view/4463725837189908065" target="_blank"><button> Check It Out</button></a>
             </li>
             <li>Bug fixes and performance optimizations.</li>
         </ul>
@@ -206,12 +418,172 @@
     <section id="highest-rank">
         <h2>Highest Rank In The Game</h2>
         <div class="rank-box">
-            <h3>XX-9,999</h3>
+           <center> <h3>XX-9,999</h3> 
+            <p class="highlight">This rank represents the top-tier players in Phasmophobia. 
+              Reaching this rank signifies mastery in ghost hunting!</p>
+              </center>
         </div>
-        </section>
-        <footer>
-          <p>&copy; 2025 Endless Media</p>
-          <nav>
-            <a href="#TOP">To Top</a>
-          </nav>
-      </footer>
+    </section>
+   
+
+    <!-- MAP-->
+  <section id="MAP">
+
+    <section class="map">
+      <h2>Most Played Maps</h2>
+     <center> <h4> Not All Map Are on Here</h4> </center>
+  
+         
+  </section>
+  <section class="map">
+      <h2>Sunny Meadows</h2>
+      
+      <div class="map-details">
+          <p>Sunny Meadows is one of the newest additions to Phasmophobia, offering a sprawling and eerie layout filled with hidden rooms and multiple floors. Its gloomy atmosphere makes it a tense experience.</p>
+          <ul>
+              <li>Size: Large</li>
+              <li>Key Features: Labyrinthine structure, multiple floors, hidden rooms</li>
+              <li>Recommended for: Experienced players</li>
+          </ul>
+      </div>
+  </section>
+
+  <section class="map">
+      <h2>Camp Woodwind</h2>
+      
+      <div class="map-details">
+          <p>Camp Woodwind is a newer map set in a small campgrounds area, with cabins scattered across a forested landscape. The ghost can be anywhere, with the challenge being the outdoor terrain.</p>
+          <ul>
+              <li>Size: Medium</li>
+              <li>Key Features: Outdoor settings, scattered cabins, forest</li>
+              <li>Recommended for: Intermediate players</li>
+          </ul>
+      </div>
+  </section>
+
+  <section class="map">
+      <h2>Tanglewood Street House</h2>
+      
+      <div class="map-details">
+          <p>Tanglewood is one of the smaller and more intimate maps, set in a typical suburban home. It’s often used by beginners due to its straightforward layout and manageable size.</p>
+          <ul>
+              <li>Size: Small</li>
+              <li>Key Features: Simple layout, house with basement and attic</li>
+              <li>Recommended for: Beginners</li>
+          </ul>
+      </div>
+  </section>
+
+  <section class="map">
+      <h2>Ridgeview Road House</h2>
+      
+      <div class="map-details">
+          <p>Ridgeview Road House is a medium-sized house with a straightforward layout and a number of rooms where the ghost can be hidden. It's an ideal map for both intermediate and beginner players.</p>
+          <ul>
+              <li>Size: Medium</li>
+              <li>Key Features: Spacious layout, basement, and attic</li>
+              <li>Recommended for: Intermediate players</li>
+          </ul>
+      </div>
+  </section>
+  
+  <section class="map">
+      <h2>Willow Street House</h2>
+     
+      <div class="map-details">
+          <p>Willow Street House is a smaller map that’s great for learning the ropes of ghost hunting. It features a cozy layout with a basement and attic, though the ghost can still be tricky to find.</p>
+          <ul>
+              <li>Size: Small</li>
+              <li>Key Features: Simple layout, basement and attic</li>
+              <li>Recommended for: Beginners</li>
+          </ul>
+      </div>
+  </section>
+  <section class="map">
+    <h2>Asylum</h2>
+   
+    <div class="map-details">
+        <p>The Asylum is one of the largest maps in Phasmophobia. It has a variety of rooms, and the ghost can be anywhere. It is known for its confusing layout, making it a challenging map for players to navigate.</p>
+        <ul>
+            <li>Size: Large</li>
+            <li>Key Features: Multiple floors, maze-like corridors, high ghost activity</li>
+            <li>Recommended for: Experienced players</li>
+        </ul>
+    </div>
+</section>
+
+<section class="map">
+    <h2>High School</h2>
+   
+    <div class="map-details">
+        <p>The High School map is a large two-floor building filled with classrooms, hallways, and a gym. Ghosts can spawn in a variety of locations, and it offers many hiding spots.</p>
+        <ul>
+            <li>Size: Large</li>
+            <li>Key Features: High ghost activity, multiple floors, multiple entrances</li>
+            <li>Recommended for: Intermediate to experienced players</li>
+        </ul>
+    </div>
+</section>
+
+<section class="map">
+    <h2>Bleasdale Farmhouse</h2>
+    
+    <div class="map-details">
+        <p>Bleasdale Farmhouse is a medium-sized farmhouse with a creepy atmosphere. It features tight hallways, attics, and basements, making it a more claustrophobic environment for ghost hunting.</p>
+        <ul>
+            <li>Size: Medium</li>
+            <li>Key Features: Tight spaces, attic and basement, low light areas</li>
+            <li>Recommended for: Intermediate players</li>
+        </ul>
+    </div>
+</section>
+
+<section class="map">
+    <h2>Edgefield Street House</h2>
+    
+    <div class="map-details">
+        <p>Edgefield is a suburban house that offers a good balance of challenge and accessibility. It's a popular map for newer players as it has a manageable size but still has enough features to make it interesting.</p>
+        <ul>
+            <li>Size: Small</li>
+            <li>Key Features: Suburban home, easy layout, great for beginners</li>
+            <li>Recommended for: Beginners to intermediate players</li>
+        </ul>
+    </div>
+</section>
+
+<section class="map">
+    <h2>Grafton Farmhouse</h2>
+    
+    <div class="map-details">
+        <p>The Grafton Farmhouse is another small map, but its eerie atmosphere and detailed design make it a fan favorite. The ghost can hide in many rooms, so players will need to be vigilant.</p>
+        <ul>
+            <li>Size: Small</li>
+            <li>Key Features: Farmhouse with multiple rooms, low visibility</li>
+            <li>Recommended for: Beginners to intermediate players</li>
+        </ul>
+    </div>
+</section>
+
+<section class="map">
+    <h2>Prison</h2>
+    
+    <div class="map-details">
+        <p>The Prison map is a large, multi-floor location with a variety of rooms such as cells, corridors, and a yard. The ghost can be difficult to track due to the map's size, making it a challenging choice.</p>
+        <ul>
+            <li>Size: Large</li>
+            <li>Key Features: Multi-floor, cells, wide open areas</li>
+            <li>Recommended for: Experienced players</li>
+        </ul>
+    </div>
+</section>
+</section>
+  
+     <footer>
+      <center>
+      <p>&copy; 2025 Endless Mediaツ. All rights reserved. <a href="#TOP"><button>Go to Top</button></a></p>
+      </center>
+  </footer>
+
+
+</body>
+</html>
